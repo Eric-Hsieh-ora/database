@@ -1,6 +1,6 @@
 {
-    "workshoptitle": "HKSE Oracle Database 23ai New Features",
-      "help": "eric.hsieh@oracle.com",
+    "workshoptitle": "Hands-on Workshop – AI and Analytics for Real World Enterprises (Vector, JSON Duality, Graph)",
+      "help": "livelabs-help-db_us@oracle.com",
       "tutorials": [
         {
           "title": "Introduction",
@@ -18,12 +18,6 @@
           "description": "23ai ADB Free database",
           "type": "livelabs",
           "filename": "../../database-setup/database-setup.md"
-        },
-        {
-          "title": "Application Development",
-          "description": "Application Development in the Oracle Database",
-          "type": "livelabs",
-          "filename": "../../intro/intro-application-development.md"
         },
         {
           "title": "Lab: JSON Duality Views",

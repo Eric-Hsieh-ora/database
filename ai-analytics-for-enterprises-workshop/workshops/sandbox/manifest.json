@@ -1,6 +1,6 @@
 {
-    "workshoptitle": "HKSE Oracle Database 23ai New Features",
-      "help": "eric.hsieh@oracle.com",
+    "workshoptitle": "Hands-on Workshop – AI and Analytics for Real World Enterprises (Vector, JSON Duality, Graph)",
+      "help": "livelabs-help-db_us@oracle.com",
       "tutorials": [
         {
             "title": "Introduction",
