@@ -4,9 +4,9 @@
       "tutorials": [
         {
           "title": "Introduction",
-          "description": "This is an introduction to installing and exploring the Oracle Database 23ai Free",
+          "description": "This is an introduction to AI and Analytics for Real World Enterprises",
           "type": "livelabs",
-          "filename": "../../intro/23ai-intro.md"
+          "filename": "../../intro/ai-analytics-for-enterprises-workshop.md"
         },
         {
           "title": "Get Started",
@@ -20,19 +20,31 @@
           "filename": "../../database-setup/database-setup.md"
         },
         {
-          "title": "Lab: JSON Duality Views",
+          "title": "Lab 1: JSON Duality Views",
           "description": "Building Duality Views",
           "type": "livelabs",
           "filename": "../../new-duality-views/new-duality-views.md"
         },
         {
-          "title": "Lab: Property Graphs",
-          "description": "Building Property Graphs",
-          "type": "livelabs",
-          "filename": "../../new-property-graph/new-property-graph.md"
+            "title": "Lab 2: Setup Property Graph",
+            "description": "Create the Operational Property Graph",
+            "type": "livelabs",
+            "filename": "../../create-graph/create-graph.md"
         },
         {
-          "title": "Lab: AI Vector Search",
+            "title": "Lab 3: Operational Property Graphs Queries with SQL/PGQ",
+            "description": "Using Property Graphs in 23ai",
+            "type": "livelabs",
+            "filename": "../../property-graphs/property-graphs-new.md"
+        },
+        {
+            "title": "Lab 4: Integration with APEX",
+            "description": "Using Property Graphs in 23ai",
+            "type": "livelabs",
+            "filename": "../../apex-property-graphs/apex-property-graphs-new.md"
+        },
+        {
+          "title": "Lab 5: AI Vector Search",
           "description": "Try out AI Vector search in 23ai",
           "type": "livelabs",
           "filename": "../../new-ai-vector-search/new-ai-vector-search.md"
