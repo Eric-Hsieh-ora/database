@@ -21,7 +21,7 @@ This lab assumes you have:
 
 ## Task 1: Create Relational Tables
 
-1. Create the 'bank_accounts' and 'bank_transfers' relational tables. The following code block creates two tables for customer and order data. Copy and run the following SQL script:
+1. Create the 'bank_accounts' and 'bank_transfers' relational tables. The following code block creates two tables for account and transfer data. Copy and run the following SQL script:
     ```
     <copy>
     DROP PROPERTY GRAPH BANK_GRAPH;
@@ -34,15 +34,6 @@ This lab assumes you have:
     DROP TABLE if exists SDW$ERR$_BANK_ACCOUNTS CASCADE CONSTRAINTS;
     DROP TABLE if exists SDW$ERR$_BANK_TRANSFERS CASCADE CONSTRAINTS;
 
-    -- Create a table to store bank_transfers data
-    CREATE TABLE if not exists BANK_TRANSFERS (
-        txn_id          NUMBER,
-        src_acct_id     NUMBER,
-        dst_acct_id     NUMBER,
-        description     VARCHAR(400),
-        amount          NUMBER
-    );
-
     -- Create a table to store bank_accounts data
     CREATE TABLE if not exists BANK_ACCOUNTS (
         id             NUMBER,
@@ -52,6 +43,15 @@ This lab assumes you have:
         address        VARCHAR2(200),
         zip            VARCHAR2(10),
         phone_number   VARCHAR2(20)
+    );
+
+    -- Create a table to store bank_transfers data
+    CREATE TABLE if not exists BANK_TRANSFERS (
+        txn_id          NUMBER,
+        src_acct_id     NUMBER,
+        dst_acct_id     NUMBER,
+        description     VARCHAR(400),
+        amount          NUMBER
     );
 
     -- Add constraints
@@ -124,21 +124,25 @@ This lab assumes you have:
 	```
 	<copy>
     INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number)
-    VALUES (1001, 'Alice Brown', 9999.99, 'alice.brown@example.com', '123 Maple Street', '12345', '555-1234');
+    VALUES (23, 'W company', 60655.89, 'w.company@example.com', '145 Maple Street', '12345', '555-1256');
+    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number)
+    VALUES (24, 'X company', 111288.55, 'x.company@example.com', '146 Maple Street', '12345', '555-1257');
+    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number)
+    VALUES (25, 'Y company', 142310.63, 'y.company@example.com', '147 Maple Street', '12345', '555-1258');
 
 
     INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount)
-    VALUES (5002, 1001, 399, 'transfer', 1);
+    VALUES (1, 24, 25, 'transfer', 4050);
 
 	</copy>
     ```
     ![inserting into our new_customers table](images/im3.png " ")
 
-2. Let's now insert data into the duality view of our customer data.
+2. Let's now insert data into the duality view of our account data.
 
 	```
 	<copy>
-    INSERT INTO bank_accounts_dv values ('{"_id":1002,"name":"Jim Brown","email":"jim.brown@example.com","address":"123 Maple Street","zip":"12345","phoneNumber":"555-5555"}');
+    INSERT INTO bank_accounts_dv values ('{"_id":26,"name":"Z company","email":"z.company@example.com","address":"148 Maple Street","zip":"12345","phoneNumber":"555-1259"}');
 
     commit;
 	</copy>
@@ -146,18 +150,18 @@ This lab assumes you have:
 
 3. Let's see how the duality views have changed.
 
-    This Duality View will show us two customers.
+    This Duality View will show us two accounts.
 
 	```
 	<copy>
-    SELECT json_serialize(DATA PRETTY) FROM bank_accounts_dv WHERE json_value(DATA, '$._id') IN (1001,1002);
+    SELECT json_serialize(DATA PRETTY) FROM bank_accounts_dv;
 	</copy>
     ```
-    This Duality View will show us the same two customers - one with an order and one without.
+    This Duality View will show us the same two accounts - one with an order and one without.
 
 	```
 	<copy>
-    SELECT json_serialize(data PRETTY) FROM bank_transfers_dv;
+    SELECT json_serialize(DATA PRETTY) FROM bank_transfers_dv t WHERE t.data."_id" = 24;
 	</copy>
     ```
 4. Let's see how the relational tables have changed.
@@ -172,21 +176,19 @@ This lab assumes you have:
 
 1. Remember, the `bank_transfers_dv` duality view only allows us to modify the order data. Let's update Alice's transfers.
 
-
 	```
 	<copy>
     UPDATE bank_transfers_dv t
     SET t.data = json_transform(
         data,
-        APPEND '$.bank_transfers' = JSON {'txnid':5003, 'dstAcctId' : 499, 'description' : 'transfer', 'amount' : 150.00}
+        APPEND '$.bank_transfers' = JSON {'txnid':2, 'dstAcctId' : 26, 'description' : 'transfer', 'amount' : 1186.00}
     )
-    WHERE t.data."_id" =1001;
+    WHERE t.data."_id" = 24;
     commit;
 
-    select json_serialize(data PRETTY) from bank_transfers_dv t where t.data."_id" = 1001;
+    select json_serialize(data PRETTY) from bank_transfers_dv t where t.data."_id" = 24;
     </copy>
     ```
-
 
     ![Updating the our customers view](images/im4.png " ")
 
@@ -197,40 +199,45 @@ This lab assumes you have:
     UPDATE bank_transfers_dv t
     SET t.data = json_transform(
         data,
-        SET '$.name' = 'Alice Wong'
+        SET '$.name' = 'ABC company'
     )
-    WHERE t.data."_id" =1001;
+    WHERE t.data."_id" =23;
 
     </copy>
     ```
     ![selecting from our customers table](images/im5.png " ")
 
-3. Let's insert some orders for our customer Jim Brown using `mergepatch`.
+3. Let's insert some orders for our account Jim Brown using `mergepatch`.
 
 	```
 	<copy>
     update bank_transfers_dv t set data = json_mergepatch(data,'{"bank_transfers" :
     [
         {
-            "txnid": 5004,
-            "dstAcctId": 100,
+            "txnid": 3,
+            "dstAcctId": 23,
             "description": "transfer",
-            "amount": 1
-        },
-        {
-            "txnid": 5005,
-            "dstAcctId": 200,
-            "description": "transfer",
-            "amount": 150
+            "amount": 4450
         }
     ]}')
-    where t.data."_id" = 1002;
+    where t.data."_id" = 25;
+
+    update bank_transfers_dv t set data = json_mergepatch(data,'{"bank_transfers" :
+    [
+        {
+            "txnid": 4,
+            "dstAcctId": 24,
+            "description": "transfer",
+            "amount": 1186
+        }
+    ]}')
+    where t.data."_id" = 26;
 
     commit;
     </copy>
     ```
 
-4. Imagine we needed to change one of the Product IDs, for example product_id = 202 shown below. 
+4. Imagine we needed to change one of the transfer destination account IDs, for example dst_acct_id = 200 shown below. 
 
     ```
     <copy>
@@ -243,16 +250,26 @@ This lab assumes you have:
 	```
 	<copy>
     UPDATE bank_transfers
-    SET dst_acct_id = 301
-    WHERE txn_id = 5005;
+    SET dst_acct_id = 23
+    WHERE txn_id = 4;
 
     commit;
 
-    SELECT json_serialize(data PRETTY) FROM bank_transfers_dv;
+    SELECT json_serialize(data PRETTY) FROM bank_transfers_dv WHERE json_value(DATA, '$._id') = 26;
     </copy>
     ```
 
-    You can now see that the update made to the orders table has propogated to the customer orders duality view, and the same occurs for all other representations of the customers table!
+    You can now see that the update made to the orders table has propogated to the account transfer duality view, and the same occurs for all other representations of the accounts table!
+
+
+6. Review the all transfer record by SQL Query table.
+
+	```
+	<copy>
+    SELECT * from bank_transfers order by TXN_ID;
+    </copy>
+    ```
+
 
 **You've completed the workshop!**
 

@@ -26,28 +26,22 @@
           "filename": "../../new-duality-views/new-duality-views-workshop.md"
         },
         {
-            "title": "Lab 2: Setup Property Graph",
+            "title": "Lab 2.1: Setup Property Graph",
             "description": "Create the Operational Property Graph",
             "type": "livelabs",
-            "filename": "../../create-graph/create-graph.md"
+            "filename": "../../create-graph/create-graph-workshop.md"
         },
         {
-            "title": "Lab 3: Operational Property Graphs Queries with SQL/PGQ",
+            "title": "Lab 2.2: Operational Property Graphs Queries with SQL/PGQ",
             "description": "Using Property Graphs in 23ai",
             "type": "livelabs",
-            "filename": "../../property-graphs/property-graphs-new.md"
+            "filename": "../../property-graphs/property-graphs-workshop.md"
         },
         {
-            "title": "Lab 4: Integration with APEX",
-            "description": "Using Property Graphs in 23ai",
-            "type": "livelabs",
-            "filename": "../../apex-property-graphs/apex-property-graphs-new.md"
-        },
-        {
-          "title": "Lab 5: AI Vector Search",
+          "title": "Lab 3: AI Vector Search",
           "description": "Try out AI Vector search in 23ai",
           "type": "livelabs",
-          "filename": "../../new-ai-vector-search/new-ai-vector-search.md"
+          "filename": "../../new-ai-vector-search/new-ai-vector-search-workshop.md"
         },
         {
           "title": "Need Help?",
