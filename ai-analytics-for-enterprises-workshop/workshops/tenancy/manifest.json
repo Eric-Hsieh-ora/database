@@ -17,7 +17,7 @@
           "title": "Database Setup",
           "description": "23ai ADB Free database",
           "type": "livelabs",
-          "filename": "../../database-setup/database-setup.md"
+          "filename": "../../database-setup/database-setup-workshop.md"
         },
         {
           "title": "Lab 1: JSON Duality Views",

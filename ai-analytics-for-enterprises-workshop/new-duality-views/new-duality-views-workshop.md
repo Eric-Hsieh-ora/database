@@ -21,7 +21,7 @@ This lab assumes you have:
 
 ## Task 1: Create Relational Tables
 
-1. Create the 'bank_accounts' and 'bank_transfers' relational tables. The following code block creates two tables for account and transfer data. Copy and run the following SQL script:
+1. Create the 'bank accounts' and 'bank transfers' relational tables. The following code block creates two tables for account and transfer data. Copy and run the following SQL script:
     ```
     <copy>
     DROP PROPERTY GRAPH BANK_GRAPH;
@@ -42,7 +42,8 @@ This lab assumes you have:
         email          VARCHAR2(100),
         address        VARCHAR2(200),
         zip            VARCHAR2(10),
-        phone_number   VARCHAR2(20)
+        phone_number   VARCHAR2(20),
+        credit_card    VARCHAR2(30)
     );
 
     -- Create a table to store bank_transfers data
@@ -64,6 +65,29 @@ This lab assumes you have:
 
     </copy>
     ```
+    ![initial workshop table](images/im1-workshop.png " ")
+
+2. Here is a diagram representing the tables that will underlying the JSON Duality view that we will be creating.
+
+    | Name | Null? | Type |
+    | ------- |:--------:| --------------:|
+    | ID | NOT NULL | NUMBER|
+    | NAME |  | VARCHAR2(100) |
+    | BALANCE |  | NUMBER |
+    | EMAIL |  | VARCHAR2(100) |
+    | ADDRESS |  | VARCHAR2(200) |
+    | ZIP |  | VARCHAR2(10) |
+    | PHONE_NUMBER |  | VARCHAR2(20) |
+    {: title="BANK_ACCOUNTS"}
+
+    | Name | Null? | Type |
+    | ------- |:--------:| --------------:|
+    | TXN_ID | NOT NULL | NUMBER|
+    | SRC\_ACCT\_ID |  | NUMBER |
+    | DST\_ACCT\_ID |  | NUMBER |
+    | DESCRIPTION |  | VARCHAR2(400) |
+    | AMOUNT |  | NUMBER |
+    {: title="BANK_TRANSFERS"}
 
 ## Task 2: Create JSON Relational Duality Views
 
@@ -82,9 +106,9 @@ This lab assumes you have:
         email           : email,
         address         : address,
         zip             : zip,
-        phoneNumber     : phone_number
-    }
-;
+        phoneNumber     : phone_number,
+        creditCard      : credit_card
+    };
 	</copy>
     ```
 
@@ -93,28 +117,28 @@ This lab assumes you have:
     ```
     <copy>
     CREATE OR REPLACE JSON RELATIONAL DUALITY VIEW bank_transfers_dv AS
-        bank_accounts
-        {
-            _id             : id,
-            name            : name,
-            address         : address,
-            zip             : zip,
-            bank_transfers : bank_transfers @insert @update @delete
-            [
-                {
-                    txnid         : txn_id,
-                    dstAcctId     : dst_acct_id,
-                    description   : description,
-                    amount        : amount
-                }
-            ]
-        };
+    bank_accounts
+    {
+        _id             : id,
+        name            : name,
+        address         : address,
+        zip             : zip,
+        bank_transfers : bank_transfers @insert @update @delete
+        [
+            {
+                txnid         : txn_id,
+                dstAcctId     : dst_acct_id,
+                description   : description,
+                amount        : amount
+            }
+        ]
+    };
 	</copy>
     ```
 
-    If you notice, this view doesn’t specify @insert, @update, or @delete on our bank_accounts table. You created this view so that you can only update orders through the `bank_transfers_dv` Duality View, and no sensitive bank_accounts information (such as bank_accounts’ credit card numbers or phone numbers) will be shown. The only way to manage that information is through the `bank_accounts_dv` view.
+    If you notice, this view doesn’t specify @insert, @update, or @delete on our bank accounts table. You created this view so that you can only update orders through the `bank_transfers_dv` Duality View, and no sensitive bank accounts information (such as 'bank_accounts' credit card numbers or phone numbers) will be shown. The only way to manage that information is through the `bank_accounts_dv` view.
 
-	![Creating the Duality View](images/im2.png =50%x*)
+	![Creating the Duality View](images/im2-workshop.png =50%x*)
 
 ## Task 3: Add Data
 
@@ -123,12 +147,12 @@ This lab assumes you have:
 
 	```
 	<copy>
-    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number)
-    VALUES (23, 'W company', 60655.89, 'w.company@example.com', '145 Maple Street', '12345', '555-1256');
-    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number)
-    VALUES (24, 'X company', 111288.55, 'x.company@example.com', '146 Maple Street', '12345', '555-1257');
-    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number)
-    VALUES (25, 'Y company', 142310.63, 'y.company@example.com', '147 Maple Street', '12345', '555-1258');
+    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number, credit_card)
+    VALUES (23, 'W company', 60655.89, 'w.company@example.com', '145 Maple Street', '12345', '555-1256', '4111-1111-1111-1111');
+    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number, credit_card)
+    VALUES (24, 'X company', 111288.55, 'x.company@example.com', '146 Maple Street', '12345', '555-1257', '4111-1111-1111-1111');
+    INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number, credit_card)
+    VALUES (25, 'Y company', 142310.63, 'y.company@example.com', '147 Maple Street', '12345', '555-1258', '4111-1111-1111-1111');
 
 
     INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount)
@@ -136,13 +160,13 @@ This lab assumes you have:
 
 	</copy>
     ```
-    ![inserting into our new_customers table](images/im3.png " ")
+    ![inserting into our new_customers table](images/im3-workshop.png " ")
 
 2. Let's now insert data into the duality view of our account data.
 
 	```
 	<copy>
-    INSERT INTO bank_accounts_dv values ('{"_id":26,"name":"Z company","email":"z.company@example.com","address":"148 Maple Street","zip":"12345","phoneNumber":"555-1259"}');
+    INSERT INTO bank_accounts_dv values ('{"_id":26,"name":"Z company","email":"z.company@example.com","address":"148 Maple Street","zip":"12345","phoneNumber":"555-1259","creditCard":"4111-1111-1111-1111"}');
 
     commit;
 	</copy>
@@ -190,7 +214,7 @@ This lab assumes you have:
     </copy>
     ```
 
-    ![Updating the our customers view](images/im4.png " ")
+    ![Updating the our customers view](images/im4-workshop.png " ")
 
 2. Let's now try and update Alice's last name. You'll see that this is not allowed!
 
@@ -269,7 +293,7 @@ This lab assumes you have:
     SELECT * from bank_transfers order by TXN_ID;
     </copy>
     ```
-
+    ![selecting from our bank transfers table](images/im5-workshop.png " ")
 
 **You've completed the workshop!**
 

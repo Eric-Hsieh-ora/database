@@ -25,61 +25,47 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
 ## Task 1: Download setup materials
 
-1. Click [this link] (https://objectstorage.ap-singapore-1.oraclecloud.com/n/hktwlab/b/workshop/o/property-graph-workshop.zip) to download the zip file with our property graph setup materials.
+1. Click [this link] (https://objectstorage.ap-singapore-1.oraclecloud.com/n/hutchhk/b/AIWorkshop/o/property-graph-workshop.zip) to download the zip file with our property graph setup materials.
 
 2. Unzip the files. You should see these files available. Most of these files we will not be using throughout the lab, but are available if you would like to see what commands we chose to create the schema with (CreateKeys.sql) or the data that populates the tables that we've created (BANK\_ACCOUNTS.csv and BANK\_TRANSFERS.csv).
 
-    ![Content of the zip file](images/1-unzip.png)
+    ![Content of the zip file](images/1-unzip-workshop.png)
 
-3. Here is a diagram representing the tables that will underlying the Operational Property Graph that we will be creating.
+3. Import bank account and transfer example data into your database.
 
-    | Name | Null? | Type |
-    | ------- |:--------:| --------------:|
-    | ID | NOT NULL | NUMBER|
-    | NAME |  | VARCHAR2(100) |
-    | BALANCE |  | NUMBER |
-    | EMAIL |  | VARCHAR2(100) |
-    | ADDRESS |  | VARCHAR2(200) |
-    | ZIP |  | VARCHAR2(10) |
-    | PHONE_NUMBER |  | VARCHAR2(20) |
-    {: title="BANK_ACCOUNTS"}
-
-    | Name | Null? | Type |
-    | ------- |:--------:| --------------:|
-    | TXN_ID | NOT NULL | NUMBER|
-    | SRC\_ACCT\_ID |  | NUMBER |
-    | DST\_ACCT\_ID |  | NUMBER |
-    | DESCRIPTION |  | VARCHAR2(400) |
-    | AMOUNT |  | NUMBER |
-    {: title="BANK_TRANSFERS"}
+    ![Load data](images/2-loaddata-workshop.png)
+    ![Input two data](images/3-loaddata-workshop.png)
+    ![Input two data](images/4-loaddata-workshop.png)
+    ![Input two data](images/5-loaddata-workshop.png)
+    ![Input two data](images/6-loaddata-workshop.png)
+    ![Input two data](images/7-loaddata-workshop.png)
+    ![Input two data](images/8-loaddata-workshop.png)
+    ![Input two data](images/9-loaddata-workshop.png)
+    ![Input two data](images/10-loaddata-workshop.png)
 
 ## Task 2: Create the Property Graph
 
-1. Click View Login Info on your LiveLabs reservation.
+1. Click graph studio.
 
-    ![Clicking for login info in LiveLabs](images/1-view-login-info.png)
+    ![Navigating to graph studio](images/1-nav-graphs-workshop.png)
 
-2. On the right hand side underneath Terraform Values, click the Graph Studio URL.
+2. Sign into Graph Studio. 
 
-    ![Locating the Graph Studio URL](images/2-graph-studio-url.png)
+    Username: AI_DEMO
 
-3. Sign into Graph Studio. 
-
-    Username: hol23ai
-
-    Password: Listed underneath Terraform Values -> User Password (hol23ai).
+    Password: Listed underneath Terraform Values -> User Password (ComeWel123##).
 
     ![Signing into Graph Studio](images/3-graph-studio-login.png)
 
-4. Click on the Graph symbol on the left-hand side menu.
+3. Click on the Graph symbol on the left-hand side menu.
 
     ![Navigating to graph symbol on menu](images/4-nav-graphs.png)
 
-5. Click </> Query.
+4. Click </> Query.
 
     ![Graph homepage](images/5-query.png)
 
-6. Use the following SQL statement to create a property graph called BANK\_GRAPH using the BANK\_ACCOUNTS table as the vertices and the BANK_TRANSFERS table as edges. Paste this into the text box:
+5. Use the following SQL statement to create a property graph called BANK\_GRAPH using the BANK\_ACCOUNTS table as the vertices and the BANK_TRANSFERS table as edges. Paste this into the text box:
 
     ```
     <copy>
@@ -101,7 +87,7 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
     ![Query to create graph is inside textbox](images/6-create-graph.png)
 
-7. Click Run. It should say Graph Successfully Created as a result at the bottom.
+6. Click Run. It should say Graph Successfully Created as a result at the bottom.
 
     ![Graph successfully created](images/7-graph-create-success.png)
 

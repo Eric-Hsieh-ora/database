@@ -95,7 +95,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     </copy>
     ```
 
-    ![Most incoming transfers accounts](images/8-num-transfers.png)
+    ![Most incoming transfers accounts](images/8-num-transfers-workshop.png)
 ​
     We see that accounts **1** and **10** are high on the list. 
     
@@ -111,7 +111,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     </copy>
     ```
 
-    ![Top 10 accounts](images/9-num-conduits.png)
+    ![Top 10 accounts](images/9-num-conduits-workshop.png)
 ​
 3. Note that account 387 shows up in both, so let's list accounts that received a transfer from account 1 in 1, 2, or 3 hops.
     
@@ -126,7 +126,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     </copy>
     ```
 
-    ![Accounts that received a transfer](images/10-transfers-to-387.png)
+    ![Accounts that received a transfer](images/10-transfers-to-1-workshop.png)
 
 ​
 4. We looked at accounts with the most incoming transfers and those which were simply conduits. Now let's query the graph to determine if there are any circular payment chains, i.e. a sequence of transfers that start and end at the same account. First let's check if there are any 3-hop (triangles) transfers that start and end at the same account.
@@ -141,7 +141,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     </copy>
     ```
 
-    ![3hop triangle transfers](images/11-num-triangles.png)
+    ![3hop triangle transfers](images/11-num-triangles-workshop.png)
 ​
 5. We can use the same query but modify the number of hops to check if there are any 4-hop transfers that start and end at the same account. 
 
@@ -155,7 +155,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     </copy>
     ```
 ​
-    ![4hop transfers](images/12-num-4hop-chains.png)
+    ![4hop transfers](images/12-num-4hop-chains-workshop.png)
 ​
 6. Lastly, check if there are any 5-hop transfers that start and end at the same account by just changing the number of hops to 5. 
    
@@ -171,7 +171,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 
     Note that though we are looking for longer chains we reuse the same MATCH pattern with a modified parameter for the desired number of hops. This compactness and expressiveness is a primary benefit of the new SQL/PGQ functionality.
     
-    ![5 hop transfers](images/13-num-5hop-chains.png)
+    ![5 hop transfers](images/13-num-5hop-chains-workshop.png)
 
 7.  Now that we know there are 3, 4, and 5-hop cycles, let's list some (any 10) accounts that had these circular payment chains. 
    
@@ -185,7 +185,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     </copy>
     ```
 ​
-    ![Any 10 accounts that have had circular payment chains](images/13-num-3to5hop-chains.png)
+    ![Any 10 accounts that have had circular payment chains](images/13-num-3to5hop-chains-workshop.png)
 ​
 8.  Let's list the top 10 accounts by number of 3 to 5 hops that have circular payment chains in descending order. 
    
@@ -199,7 +199,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     </copy>
     ```
 ​
-    ![Top ten accounts that had circular payment chains](images/14-num-cycles.png)
+    ![Top ten accounts that had circular payment chains](images/14-num-cycles-workshop.png)
 ​
     Note that accounts **1**, **10** and **3** are the ones involved in most of the 3 to 5 hops circular payment chains. 
 ​
@@ -227,7 +227,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 
     Click the document icon to see the successful output.
 
-    ![Inserting additional data to BANK_TRANSFERS](images/15-first-insert.png)
+    ![Inserting additional data to BANK_TRANSFERS](images/15-first-insert-workshop.png)
 
 10. Re-run the top 10 query to see if there are any changes after inserting rows in BANK\_TRANSFERS.
    
@@ -245,9 +245,9 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 
     Click back to the 3x3 square icon to look at the table output.
 
-    ![Re-running query to get top 10 accounts with incoming transfers](images/16-second-num-transfers.png)
+    ![Re-running query to get top 10 accounts with incoming transfers](images/16-second-num-transfers-workshop.png)
 ​
-11. In Step 5 above we saw that accounts 1 and 3 had a number of 4-hop circular payments chains. Let's check if account 39 had any.
+11. In Step 5 above we saw that accounts 1 and 3 had a number of 4-hop circular payments chains. Let's check if account 15 had any.
     
     ```
     <copy>
@@ -261,7 +261,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 
     It has 0.      
 ​
-   ​ ![Querying if account 39 had any 4-hop circular payment chains](images/17-num-4hop-cycles.png " ")
+   ​ ![Querying if account 39 had any 4-hop circular payment chains](images/17-num-4hop-cycles-workshop.png " ")
 ​
 12.  So let’s insert more transfers which create some circular payment chains.
 
@@ -278,7 +278,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 
     Click the document icon to see the successful output.
   ​  
-    ![inserting more transfers](images/18-second-insert.png)
+    ![inserting more transfers](images/18-second-insert-workdhop.png)
 ​
 13.  Re-run the following query since we've added more circular payment chains.
    
@@ -294,17 +294,16 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 
     Click back to the 3x3 square icon to look at the table output.
   ​  
-    ![rerun query again](images/19-num-4hop-cycles.png " ")
+    ![rerun query again](images/19-num-4hop-cycles-workshop.png " ")
 
     Notice how we now have five 4-hop circular payment chains because the edges of BANK\_GRAPH were updated when additional transfers were added to BANK\_TRANSFERS. 
 
-14.  We inserted three rows and that resulted in five circular payment chains of length four. Let’s examine why.
+14.  We inserted three rows and that resulted in ten circular payment chains of length four. Let’s examine why.
 
-    Execute the following query to find the number of 3-hop chains from account 39 to one of the accounts 407, 559, or 982.
+    Execute the following query to find the number of 3-hop chains from account 15 to one of the accounts 4, 5, or 6.
 
-    Note that there are 2 chains from account 39 to account 407 and another 2 from 39 to 559.
+    Note that there are 6 chains from account 15 to account 4 and another 2 from 15 to 5, and another 2 from 15 to 6.
 
-    So when we inserted a transfer from account 407 to account 39 that resulted in two 4-hop chains. The same occurs for account 559. Hence we get five new 4-hop circular payment chains.
 
     ```
     <copy>
@@ -315,19 +314,106 @@ A common query in analyzing money flows is to see if there is a sequence of tran
     COLUMNS (s.id as s0, a.id as a1, b.id as a2, c.id as a3) );
     </copy>
     ```
-    
-    ![rerun query again](images/20-achart.png)
-15. Finally let's undo the changes and delete the newly inserted rows.
-   
+
+    ![rerun query again](images/20-achart-workshop.png)
+
+15. Load in memory the graph. Paste the following SQL statement into the text box:
+
+    ![Load data in memory](images/1-load-in-memory.png)
+    ![Load data in memory](images/2-load-in-memory.png)
+    ![Load data in memory](images/3-load-in-memory.png)
+
+16. Into Bank Graph and load data into memory.
+
+    ![Load data in memory](images/4-load-in-memory.png)
+
+17. Load the data into memory.
+
+    ![Load data in memory](images/5-load-in-memory.png)
+
+    ```
+    <copy>
+    var GRAPH_NAME="BANK_GRAPH";
+    // try getting the graph from the in-memory graph server
+    PgxGraph salesGraph = session.getGraph(GRAPH_NAME);
+    // if it does not exist read it into memory
+    if (salesGraph == null) {
+        session.readGraphByName(GRAPH_NAME, GraphSource.PG_PGQL);
+        out.println ("Graph "+ GRAPH_NAME + " successfully loaded");
+        salesGraph = session.getGraph(GRAPH_NAME);
+    } else {
+       // out.println ("Graph "+ GRAPH_NAME + " already loaded");
+       out.println ("Graph '"+ salesGraph.getName() + "' already loaded");
+    }
+    out.println ("# of Vertices: "+salesGraph.getNumVertices() + " \t" + "# of Edges: "+salesGraph.getNumEdges() +". In memory size is: " + salesGraph.getMemoryMb() + " Mb");
+    </copy>
+    ```
+    ![Load data in memory](images/6-load-in-memory.png)
+
+18. Review the first three account transfer data by graph view.
+
+    ![Load data in memory](images/7-load-in-memory.png)
+
+    ```
+    <copy>
+    SELECT *
+    FROM graph_table(BANK_GRAPH
+    MATCH (src) - [t is BANK_TRANSFERS] -> (dst) 
+    COLUMNS (src.id AS source_acct, src.name AS source_acct_name, dst.id AS destination_acct, dst.name AS destination_acct_name, t.amount as amount)
+    ) WHERE source_acct = 15
+    </copy>
+    ```
+
+    ![Load data in memory](images/1-graph-result.png)
+
+    ```
+    <copy>
+    SELECT *
+    FROM graph_table(BANK_GRAPH
+    MATCH (src) - [t is BANK_TRANSFERS] -> (dst) 
+    COLUMNS (src.id AS source_acct, src.name AS source_acct_name, dst.id AS destination_acct, dst.name AS destination_acct_name, t.amount as amount)
+    ) WHERE source_acct = 3
+    </copy>
+    ```
+
+    ![Load data in memory](images/2-graph-result.png)
+
+    ```
+    <copy>
+    SELECT *
+    FROM graph_table(BANK_GRAPH
+    MATCH (src) - [t is BANK_TRANSFERS] -> (dst) 
+    COLUMNS (src.id AS source_acct, src.name AS source_acct_name, dst.id AS destination_acct, dst.name AS destination_acct_name, t.amount as amount)
+    ) WHERE source_acct = 1
+    </copy>
+    ```
+
+    ![Load data in memory](images/3-graph-result.png)
+
+    ```
+    <copy>
+    SELECT *
+    FROM graph_table(BANK_GRAPH
+    MATCH (src) - [t is BANK_TRANSFERS] -> (dst) 
+    COLUMNS (src.id AS source_acct, src.name AS source_acct_name, dst.id AS destination_acct, dst.name AS destination_acct_name, t.amount as amount)
+    ) WHERE source_acct = 10
+    </copy>
+    ```
+
+    ![Load data in memory](images/4-graph-result.png)
+
+19. Finally let's undo the changes and delete the newly inserted rows.
+
     ```
     <copy>
     DELETE FROM bank_transfers 
     WHERE txn_id IN (96,97,98,99,100,101,102,103,104,105,106,107,108,109,110);
     </copy>
     ```
-    ​![undo changes and delete rows](images/21-delete.png)
+    ​![undo changes and delete rows](images/21-delete-workshop.png)
+    ​![undo changes and delete rows](images/22-delete-workshop.png)
 
-16. You have now completed this lab.
+20. You have now completed this lab.
 
 ## Learn More
 * [Oracle Property Graph](https://docs.oracle.com/en/database/oracle/property-graph/index.html)
