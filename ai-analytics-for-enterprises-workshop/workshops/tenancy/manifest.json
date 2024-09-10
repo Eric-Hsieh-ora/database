@@ -15,7 +15,7 @@
         },
         {
           "title": "Database Setup",
-          "description": "23ai ADB Free database",
+          "description": "23ai ADB database",
           "type": "livelabs",
           "filename": "../../database-setup/database-setup-workshop.md"
         },
