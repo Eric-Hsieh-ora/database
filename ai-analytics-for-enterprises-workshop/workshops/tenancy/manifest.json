@@ -26,16 +26,10 @@
           "filename": "../../new-duality-views/new-duality-views-workshop.md"
         },
         {
-            "title": "Lab 2.1: Setup Property Graph",
-            "description": "Create the Operational Property Graph",
-            "type": "livelabs",
-            "filename": "../../create-graph/create-graph-workshop.md"
-        },
-        {
-            "title": "Lab 2.2: Operational Property Graphs Queries with SQL/PGQ",
+            "title": "Lab 2: Operational Property Graph",
             "description": "Using Property Graphs in 23ai",
             "type": "livelabs",
-            "filename": "../../property-graphs/property-graphs-workshop.md"
+            "filename": "../../create-graph/create-graph-workshop.md"
         },
         {
           "title": "Lab 3: AI Vector Search",
