@@ -307,7 +307,3 @@ If the eTags do not match, which can occur if another concurrent operation updat
 * [JSON Relational Duality: The Revolutionary Convergence of Document, Object, and Relational Models](https://blogs.oracle.com/database/post/json-relational-duality-app-dev)
 * [JSON Duality View documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/jsnvu/overview-json-relational-duality-views.html#)
 
-## Acknowledgements
-* **Author** - Killian Lynch, Oracle Database Product Management, Product Manager
-* **Contributors** - Dominic Giles, Oracle Database Product Management, Distinguished Product Manager
-* **Last Updated By/Date** - Briana Ambler, Oracle Database Product Management, Product Manager, August 2024

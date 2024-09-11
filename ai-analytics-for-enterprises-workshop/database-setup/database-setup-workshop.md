@@ -27,8 +27,6 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 
     Input the password "ComeWel123##". **Download** to download the wallet file.
 
-    ![Download wallet file](images/im3-download-wallet-workshop.png " ")
-
     The wallet file will named **Wallet_################.zip**. (The ################. is the unique id of the database and will be different for each user.)
 
 4. Entry the SQL development.

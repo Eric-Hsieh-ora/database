@@ -1,25 +1,19 @@
-# Exploring AI Vector Search
+# Oracle Cloud Infrastructure GenAI Service and Oracle 23ai
+## In this Lab, we are are going to show you:
 
 ## Introduction
+- How Oracle Gen AI service and Oracle 23ai can be used within LangChain framework
+- How to leverage Oracle 23ai's AI Vector Search and Graph to perform Advanced RAG
+- How to use Oracle GenAI service to create an chat that answers questions intelligently using private information stored in Oracle 23ai 
+- Look at the multi-lingual capability of Oracle GenAI Service
 
-Welcome to the "Exploring AI Vector Search" workshop. In this workshop, you will learn what vectors are and how they are used in AI applications. We will cover the creation of vector tables, perform basic DDL operations, and dive into similarity search using some of the new SQL functions in Oracle Database 23ai. This lab is meant to be a small introduction to the new AI functionality that Oracle Database 23ai supports.
+## We are also going to use an AI Agent in the lab:  
+- Langchain Agent Framework
+- Structed Chat ReAct Agent
+- Agent Tools
 
-This lab will focus on AI Vector search at a very high level. If you're looking for an in depth workshop on AI Vector Search, check out the following labs:
-* [Complete RAG Application using PL/SQL in Oracle Database 23ai](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3934&clear=RR,180&session=1859311324732)
-* [7 Easy Steps to Building a RAG Application using LangChain](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3927&clear=RR,180&session=1859311324732)
-* [Using Vector Embedding Models with Python](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3928&clear=RR,180&session=1859311324732)
-* [Using Vector Embedding Models with Nodejs](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3926&clear=RR,180&session=1859311324732)
 
-Estimated Lab Time: 20 minutes
-
-### Objective:
-In this lab, you will explore the new vector data type introduced in Oracle Database 23ai. You will create a vector table and perform basic DDL operations on the vectors. You will also learn about similarity search and how it relates to vectors, as well as use some of the new AI focused SQL functions in the database.
-
-### Prerequisites:
-- Access to Oracle Database 23ai environment.
-- Basic understanding of SQL and PL/SQL.
-
-## Task 1: Login the Data Science environment
+## Task 1: Login the Data Science environmentv
 1. Click [this link] (https://objectstorage.ap-singapore-1.oraclecloud.com/n/hutchhk/b/AIWorkshop/o/notebook-workshop.zip) to download the zip file with our notebook setup materials.
 
 2. Unzip the files. You should see these files available. In the same time, copy the previous database setup section downloaded **Wallet_################.zip** file into the folder too. This file will be upload to the data science project later.
@@ -48,7 +42,7 @@ In this lab, you will explore the new vector data type introduced in Oracle Data
 
 ## Task 2. Import the Data science notebook
 
-1. Into the Data Science Notebook Lab. You can extend the session first. Then upload this file that we downloaded and unzip.
+1. In Into the Data Science Notebook Lab. You can extend the session first. Then upload this file that we downloaded and unzip.
 
     ![Extend session and upload file](images/6-extend-upload-workshop.png " ")
 
@@ -72,34 +66,34 @@ In this lab, you will explore the new vector data type introduced in Oracle Data
 
 6. Let's start to run the notebook.
 
-## Task 3: Integrate the JSON, Graph, and Vector AI
+## Task 3: Integrate JSON, Graph, GenAI and 23ai Vector Search
 
-1. Let's start to run the notebook. You can press the **Shift+Enter** to execute the notebook script step by step.
-    ![Execute the notebook script step by step](images/1-notebook-execute-workshop.png " ")
-    Install require python libraries.
-    ![Execute the notebook script step by step](images/2-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/3-notebook-execute-workshop.png " ")
-    Connect to the database successfully.
-    ![Execute the notebook script step by step](images/4-notebook-execute-workshop.png " ")
-    Load Document.
-    ![Execute the notebook script step by step](images/5-notebook-execute-workshop.png " ")
+1. After you have opened the notebook, you can press the **Shift+Enter** to execute the notebook script step by step.  
 
-    ![Execute the notebook script step by step](images/6-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/7-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/8-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/9-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/10-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/11-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/12-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/13-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/14-notebook-execute-workshop.png " ")
-    ![Execute the notebook script step by step](images/15-notebook-execute-workshop.png " ")
+### In this notebook, we are are going to show you:
+
+- How Oracle Gen AI service and Oracle 23ai can be used within LangChain framework
+- How to leverage Oracle 23ai's AI Vector Search and Graph to perform Advanced RAG
+- How to use Oracle GenAI service to create an chat that answers questions intelligently using private information stored in Oracle 23ai 
+- Look at the multi-lingual capability of Oracle GenAI Service
+
+### We are also going to use an AI Agent in the lab:  
+- Langchain Agent Framework
+- Structed Chat ReAct Agent
+- Agent Tools
+
+#### The notebook has 2 main sections
+**Oracle 23ai Vector Search with Document Processing**
+**Oracle Cloud Infrastructure Gen AI Service**
+### Now, let's switch to the notebook for further instructions and have some fun!
+
 
 ## Learn More
 
 * [AI Vector Search User Guide](https://docs.oracle.com/en/database/oracle/oracle-database/23/vecse/oracle-ai-vector-search-users-guide.pdf)
 * [23ai Release notes](https://docs.oracle.com/en/database/oracle/oracle-database/23/rnrdm/index.html)
 * [7 Easy Steps to Building a RAG Application using LangChain](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3927&clear=RR,180&session=1859311324732)
+* [Build an AI Chatbot engine with Oracle Database 23ai and OCI Generative AI Services](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3939&clear=RR,180&session=107280580579860)
 * [Using Vector Embedding Models with Python](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3928&clear=RR,180&session=1859311324732)
 * [Using Vector Embedding Models with Nodejs](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3926&clear=RR,180&session=1859311324732)
 

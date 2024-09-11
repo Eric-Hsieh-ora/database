@@ -517,8 +517,3 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 ## Learn More
 
 * [Introducing Oracle Database 23ai Free – Developer Release](https://blogs.oracle.com/database/post/oracle-database-23c-free)
-
-## Acknowledgements
-* **Author** - Kaylien Phan, William Masdon
-* **Contributors** - David Start
-* **Last Updated By/Date** - Kaylien Phan, Database Product Management, April 2023
