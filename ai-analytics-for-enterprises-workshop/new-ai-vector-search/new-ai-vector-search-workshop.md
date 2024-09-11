@@ -1,22 +1,23 @@
 # Oracle Cloud Infrastructure GenAI Service and Oracle 23ai
-## In this Lab, we are are going to show you:
 
 ## Introduction
+
 - How Oracle Gen AI service and Oracle 23ai can be used within LangChain framework
 - How to leverage Oracle 23ai's AI Vector Search and Graph to perform Advanced RAG
 - How to use Oracle GenAI service to create an chat that answers questions intelligently using private information stored in Oracle 23ai 
 - Look at the multi-lingual capability of Oracle GenAI Service
 
-## We are also going to use an AI Agent in the lab:  
+**We are also going to use an AI Agent in the lab:**
 - Langchain Agent Framework
 - Structed Chat ReAct Agent
 - Agent Tools
 
+**_Estimated Lab Time: 30 minutes_**
 
-## Task 1: Login the Data Science environmentv
+## Task 1: Login the Data Science environment
 1. Click [this link] (https://objectstorage.ap-singapore-1.oraclecloud.com/n/hutchhk/b/AIWorkshop/o/notebook-workshop.zip) to download the zip file with our notebook setup materials.
 
-2. Unzip the files. You should see these files available. In the same time, copy the previous database setup section downloaded **Wallet_################.zip** file into the folder too. This file will be upload to the data science project later.
+2. Unzip the files. You should see these files available.
 
     ![Content of the zip file](images/1-unzip-notebook-workshop.png)
 
@@ -59,23 +60,23 @@
 
 ## Task 3: Integrate JSON, Graph, GenAI and 23ai Vector Search
 
-1. After you have opened the notebook, you can press the **Shift+Enter** to execute the notebook script step by step.  
+After you have opened the notebook, you can press the **Shift+Enter** to execute the notebook script step by step.  
 
-### In this notebook, we are are going to show you:
+In this notebook, we are are going to show you:
 
 - How Oracle Gen AI service and Oracle 23ai can be used within LangChain framework
 - How to leverage Oracle 23ai's AI Vector Search and Graph to perform Advanced RAG
 - How to use Oracle GenAI service to create an chat that answers questions intelligently using private information stored in Oracle 23ai 
 - Look at the multi-lingual capability of Oracle GenAI Service
 
-### We are also going to use an AI Agent in the lab:  
+We are also going to use an AI Agent in the lab:  
 - Langchain Agent Framework
 - Structed Chat ReAct Agent
 - Agent Tools
 
-#### The notebook has 2 main sections
-**Oracle 23ai Vector Search with Document Processing**
-**Oracle Cloud Infrastructure Gen AI Service**
+### The notebook has 2 main sections
+* Oracle 23ai Vector Search with Document Processing
+* Oracle Cloud Infrastructure Gen AI Service
 ### Now, let's switch to the notebook for further instructions and have some fun!
 
 
