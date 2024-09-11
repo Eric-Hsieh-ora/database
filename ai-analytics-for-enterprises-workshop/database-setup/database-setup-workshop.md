@@ -11,7 +11,7 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 - Complete the Get Started Lab.
 - Basic understanding of SQL is helpful.
 
-## Task 1: Database wallet download and login
+## Task 1: Database login
 1. Using the hamburger menu in the top left hand of the screen, **click** Oracle Database and then click Autonomous Database.
 
     ![locate adb](images/im1.png " ")
@@ -20,32 +20,23 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 
     ![locate adb](images/im2-workshop.png " ")
 
-3. Download the wallet and save it to your local machine. We will use this wallet to connect to the database later.
-
-    ![Download wallet file](images/im1-download-wallet-workshop.png " ")
-    ![Download wallet file](images/im2-download-wallet-workshop.png " ")
-
-    Input the password "ComeWel123##". **Download** to download the wallet file.
-
-    The wallet file will named **Wallet_################.zip**. (The ################. is the unique id of the database and will be different for each user.)
-
-4. Entry the SQL development.
+3. Entry the SQL development.
 
     ![locate adb](images/im3-workshop.png " ")
 
-5. Sign-out admin user.
+4. Sign-out admin user.
 
     ![locate adb](images/im4-workshop.png " ")
 
-6. Input account "**AI_DEMO**", and password "ComeWel123##". **Click** Sign in to continue.
+5. Input account "**AI_DEMO**", and password "ComeWel123##". **Click** Sign in to continue.
 
     ![locate adb](images/im5-workshop.png " ")
 
-7. Entry the SQL development console.
+6. Entry the SQL development console.
 
     ![locate adb](images/im6-workshop.png " ")
 
-8. You've now login in Oracle Autonomous Database 23ai on Oracle Cloud Infrastructure. Explore any of the labs at your own pace.
+7. You've now login in Oracle Autonomous Database 23ai on Oracle Cloud Infrastructure. Explore any of the labs at your own pace.
 
     ![locate adb](images/im7-workshop.png " ")
 

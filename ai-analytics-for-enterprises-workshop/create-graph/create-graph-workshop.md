@@ -59,7 +59,7 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
     Password: Listed underneath Terraform Values -> User Password (ComeWel123##).
 
-    ![Signing into Graph Studio](images/3-graph-studio-login.png)
+    ![Signing into Graph Studio](images/3-graph-studio-login-workshop.png)
 
 3. Click on the Graph symbol on the left-hand side menu.
 
@@ -105,7 +105,7 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
     ![Creating notebook button clicked](images/8-create-notebook.png)
 
-3. You can name the notebook BANK_GRAPH. The description will be Notebook for Operational Property Graphs LiveLab. You can leave the tags empty.
+3. You can name the notebook **BANK_GRAPH**. The description will be **Notebook for Operational Property Graphs LiveLab**. You can leave the tags empty.
 
     ![Notebook information being filled out](images/9-notebook-info.png)
 

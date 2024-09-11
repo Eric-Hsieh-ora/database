@@ -52,16 +52,7 @@
     You can see the uploaded file in console.
     ![Extend session and upload file](images/8-upload-result-workshop.png " ")
 
-2. Into the Terminal.
-    ![Extend session and upload file](images/9-into-terminal-workshop.png " ")
-
-3. In the Terminal, type in "sh go.sh" and press "Enter" to execute the shell file.
-    ![Execute shell file go.sh](images/10-execute-shell-workshop.png " ")
-
-4. Complete the configuration setup.
-    ![Completed the go shell script](images/11-shell-complete-workshop.png " ")
-
-5. Entry the notebook and start ot run the notebook.
+3. Entry the notebook and start ot run the notebook.
     ![Start to execute the notebook script](images/12-start-notebook-workshop.png " ")
 
 6. Let's start to run the notebook.
