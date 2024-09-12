@@ -6,7 +6,7 @@ Welcome to the "Exploring JSON Relational Duality with SQL" lab. In this lab, yo
 
 This lab is only intended to give you a small taste of what Duality Views have to offer. For full, in-depth free workshops, follow this [link](https://livelabs.oracle.com/pls/apex/f?p=133:100:110578183178299::::SEARCH:duality%20views).
 
-**_Estimated Lab Time: 15 minutes_**
+**_Estimated Lab Time: 20 minutes_**
 
 ### **Objectives**
 
@@ -24,7 +24,7 @@ This lab assumes you have:
 1. Create the 'bank accounts' and 'bank transfers' relational tables. The following code block creates two tables for account and transfer data. Copy and run the following SQL script:
     ```
     <copy>
-    DROP PROPERTY GRAPH BANK_GRAPH;
+    DROP PROPERTY GRAPH if exists BANK_GRAPH;
 
     DROP TABLE if exists bank_transfers CASCADE CONSTRAINTS;
     DROP TABLE if exists bank_accounts CASCADE CONSTRAINTS;
@@ -98,7 +98,7 @@ This lab assumes you have:
     ```
     <copy>
     CREATE OR REPLACE JSON RELATIONAL DUALITY VIEW bank_accounts_dv AS
-    bank_accounts @insert @update @delete
+    bank_accounts @insert @update --@delete
     {
         _id             : id,
         name            : name,
@@ -148,11 +148,11 @@ This lab assumes you have:
 	```
 	<copy>
     INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number, credit_card)
-    VALUES (23, 'W company', 60655.89, 'w.company@example.com', '145 Maple Street', '12345', '555-1256', '4111-1111-1111-1111');
+    VALUES (23, 'W Company', 60655.89, 'w.company@example.com', '145 Maple Street', '12345', '555-1256', '4111-1111-1111-1111');
     INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number, credit_card)
-    VALUES (24, 'X company', 111288.55, 'x.company@example.com', '146 Maple Street', '12345', '555-1257', '4111-1111-1111-1111');
+    VALUES (24, 'X Company', 111288.55, 'x.company@example.com', '146 Maple Street', '12345', '555-1257', '4111-1111-1111-1111');
     INSERT INTO bank_accounts (id, name, balance, email, address, zip, phone_number, credit_card)
-    VALUES (25, 'Y company', 142310.63, 'y.company@example.com', '147 Maple Street', '12345', '555-1258', '4111-1111-1111-1111');
+    VALUES (25, 'Y Company', 142310.63, 'y.company@example.com', '147 Maple Street', '12345', '555-1258', '4111-1111-1111-1111');
 
 
     INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount)
@@ -166,29 +166,12 @@ This lab assumes you have:
 
 	```
 	<copy>
-    INSERT INTO bank_accounts_dv values ('{"_id":26,"name":"Z company","email":"z.company@example.com","address":"148 Maple Street","zip":"12345","phoneNumber":"555-1259","creditCard":"4111-1111-1111-1111"}');
+    INSERT INTO bank_accounts_dv values ('{"_id":26,"name":"Z Company","email":"z.company@example.com","address":"148 Maple Street","zip":"12345","phoneNumber":"555-1259","creditCard":"4111-1111-1111-1111"}');
 
     commit;
 	</copy>
     ```
-
-3. Let's see how the duality views have changed.
-
-    This Duality View will show us two accounts.
-
-	```
-	<copy>
-    SELECT json_serialize(DATA PRETTY) FROM bank_accounts_dv;
-	</copy>
-    ```
-    This Duality View will show us the same two accounts - one with an order and one without.
-
-	```
-	<copy>
-    SELECT json_serialize(DATA PRETTY) FROM bank_transfers_dv t WHERE t.data."_id" = 24;
-	</copy>
-    ```
-4. Let's see how the relational tables have changed.
+3. Let's see how the relational tables have changed.
 
 	```
 	<copy>
@@ -196,104 +179,127 @@ This lab assumes you have:
 	</copy>
     ```
 
+4. Let's see how the duality views have changed.
+
+    This Duality View will show us two accounts.
+
+	```
+	<copy>
+    SELECT * FROM bank_transfers_dv;
+	</copy>
+    ```
+
+5. Let's now insert new transfer data.
+
+	```
+	<copy>
+    INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount) VALUES (3, 25, 23, 'transfer', 4050);
+    INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount) VALUES (4, 26, 23, 'transfer', 1186);
+
+    commit;
+	</copy>
+    ```
+
+
+
 ## Task 4: Update Data
 
-1. Remember, the `bank_transfers_dv` duality view only allows us to modify the order data. Let's update Alice's transfers.
+1. Navigate to the JSON collection page and view data.
+
+    ![Navigate to the JSON collection](images/im4-nav-JSON-page-workshop.png " ")
+    ![Navigate to the JSON collection](images/im4-JSON-page-workshop.png " ")
+
+2. Let's query the Y Company's transfer data by 'BANK_TRANSFERS' table.
 
 	```
 	<copy>
-    UPDATE bank_transfers_dv t
-    SET t.data = json_transform(
-        data,
-        APPEND '$.bank_transfers' = JSON {'txnid':2, 'dstAcctId' : 26, 'description' : 'transfer', 'amount' : 1186.00}
-    )
-    WHERE t.data."_id" = 24;
-    commit;
-
-    select json_serialize(data PRETTY) from bank_transfers_dv t where t.data."_id" = 24;
-    </copy>
+    {"name":"Y Company"}
+	</copy>
     ```
+    ![Navigate to the JSON collection](images/im4-JSON-query-workshop.png " ")
 
-    ![Updating the our customers view](images/im4-workshop.png " ")
-
-2. Let's now try and update Alice's last name. You'll see that this is not allowed!
+3. APPEND a new record to the X Company's transfer data.
+	```
+	<copy>
+    {"name":"X Company"}
+	</copy>
+    ```
+    ![Navigate to the JSON collection](images/im4-JSON-2-workshop.png " ")
 
 	```
 	<copy>
-    UPDATE bank_transfers_dv t
-    SET t.data = json_transform(
-        data,
-        SET '$.name' = 'ABC company'
-    )
-    WHERE t.data."_id" =23;
-
-    </copy>
+    {
+        "_id": 24,
+        "name": "X Company",
+        "address": "146 Maple Street",
+        "zip": "12345",
+        "bank_transfers": [
+            {
+                "txnid": 1,
+                "dstAcctId": 25,
+                "description": "transfer",
+                "amount": 4050
+            },
+            {
+                "txnid": 2,
+                "dstAcctId": 26,
+                "description": "transfer",
+                "amount": 1186
+            }
+        ]
+    }
+	</copy>
     ```
-    ![selecting from our customers table](images/im5.png " ")
+    ![Append new JSON collection](images/im4-JSON-append-workshop.png " ")
+    ![Append new JSON collection result](images/im4-JSON-append-reqult-workshop.png " ")
 
-3. Let's insert some orders for our account Jim Brown using `mergepatch`.
+4. Let's now try and update company info from **`bank_transfers_dv`**. You'll see that this is not allowed!
+
+    ![update account table](images/im4-JSON-update-company1-workshop.png " ")
+
+    ```
+	<copy>
+    {
+        "_id": 24,
+        "name": "X Company",
+        "address": "150 Maple Street",
+        "zip": "55555"
+    }
+	</copy>
+    ```
+
+    ![update account table](images/im4-JSON-update-company2-workshop.png " ")
+    ![update account table](images/im4-JSON-update-company3-workshop.png " ")
+
+
+5. Let's now try and update company info from **`bank_accounts_dv`**. You'll see that this is allowed!
+	```
+	<copy>
+    {"name":"X Company"}
+	</copy>
+    ```
+    ![Navigate to the JSON collection](images/im4-JSON-account-workshop.png " ")
+
+
+
 
 	```
 	<copy>
-    update bank_transfers_dv t set data = json_mergepatch(data,'{"bank_transfers" :
-    [
-        {
-            "txnid": 3,
-            "dstAcctId": 23,
-            "description": "transfer",
-            "amount": 4450
-        }
-    ]}')
-    where t.data."_id" = 25;
-
-    update bank_transfers_dv t set data = json_mergepatch(data,'{"bank_transfers" :
-    [
-        {
-            "txnid": 4,
-            "dstAcctId": 24,
-            "description": "transfer",
-            "amount": 1186
-        }
-    ]}')
-    where t.data."_id" = 26;
-
-    commit;
-    </copy>
+    {
+        "_id": 24,
+        "name": "X Company",
+        "balance": 111288.55,
+        "email": "x.company@example.com",
+        "address": "150 Maple Street",
+        "zip": "55555",
+        "phoneNumber": "555-1257",
+        "creditCard": "4111-1111-1111-1111"
+    }
+	</copy>
     ```
+    ![update JSON collection](images/im4-JSON-3-workshop.png " ")
+    ![update JSON collection](images/im4-JSON-3-result-workshop.png " ")
 
-4. Imagine we needed to change one of the transfer destination account IDs, for example dst_acct_id = 200 shown below. 
-
-    ```
-    <copy>
-    SELECT json_serialize(data PRETTY) FROM bank_transfers_dv;
-    </copy>
-    ```
-
-5. Using a single update statement, we can easily update product_id 202 to 999 in every JSON duality view.
-
-	```
-	<copy>
-    UPDATE bank_transfers
-    SET dst_acct_id = 23
-    WHERE txn_id = 4;
-
-    commit;
-
-    SELECT json_serialize(data PRETTY) FROM bank_transfers_dv WHERE json_value(DATA, '$._id') = 26;
-    </copy>
-    ```
-
-    You can now see that the update made to the orders table has propogated to the account transfer duality view, and the same occurs for all other representations of the accounts table!
-
-
-6. Review the all transfer record by SQL Query table.
-
-	```
-	<copy>
-    SELECT * from bank_transfers order by TXN_ID;
-    </copy>
-    ```
-    ![selecting from our bank transfers table](images/im5-workshop.png " ")
 
 **You've completed the workshop!**
 

@@ -7,7 +7,7 @@ You will be creating an Operational Property Graph inside of Graph Studio, one o
 In this lab you will query the newly created graph (that is, `bank_graph`) using SQL/PGQ, a new extension in SQL:2023.
 ​
 
-Estimated Time: 10 minutes
+**_Estimated Lab Time: 20 minutes_**
 
 ### Objectives
 

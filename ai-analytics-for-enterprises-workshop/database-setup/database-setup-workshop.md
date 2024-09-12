@@ -12,31 +12,26 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 - Basic understanding of SQL is helpful.
 
 ## Task 1: Database login
-1. Using the hamburger menu in the top left hand of the screen, **click** Oracle Database and then click Autonomous Database.
+1. Log in to the Oracle Cloud Console and select the region Singapore.
+   https://cloud.oracle.com/?region=ap-singapore-1&tenant=hutchhk
+
+   After login, if the region is not Singapore, click the region name in the top right hand of the screen and select Singapore.
+
+    ![switch region](images/im1-switch-region.png " ")
+
+2. Using the hamburger menu in the top left hand of the screen, **click** Oracle Database and then click Autonomous Database.
 
     ![locate adb](images/im1.png " ")
 
-2. Now **select** "DEMODB" Autonomous Database.
+3. Now select the **your name compartment**, and select **DEMODB** Autonomous Database.
 
     ![locate adb](images/im2-workshop.png " ")
 
-3. Entry the SQL development.
+4. Entry the SQL development.
 
     ![locate adb](images/im3-workshop.png " ")
 
-4. Sign-out admin user.
-
-    ![locate adb](images/im4-workshop.png " ")
-
-5. Input account "**AI_DEMO**", and password "ComeWel123##". **Click** Sign in to continue.
-
-    ![locate adb](images/im5-workshop.png " ")
-
-6. Entry the SQL development console.
-
-    ![locate adb](images/im6-workshop.png " ")
-
-7. You've now login in Oracle Autonomous Database 23ai on Oracle Cloud Infrastructure. Explore any of the labs at your own pace.
+5. You've now login in Oracle Autonomous Database 23ai on Oracle Cloud Infrastructure. Explore any of the labs at your own pace.
 
     ![locate adb](images/im7-workshop.png " ")
 
