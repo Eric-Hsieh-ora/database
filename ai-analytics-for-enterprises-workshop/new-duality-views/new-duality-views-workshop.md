@@ -98,7 +98,7 @@ This lab assumes you have:
     ```
     <copy>
     CREATE OR REPLACE JSON RELATIONAL DUALITY VIEW bank_accounts_dv AS
-    bank_accounts @insert @update --@delete
+    bank_accounts @insert @update @delete
     {
         _id             : id,
         name            : name,
@@ -178,29 +178,17 @@ This lab assumes you have:
     select * from bank_accounts;
 	</copy>
     ```
-
-4. Let's see how the duality views have changed.
-
-    This Duality View will show us two accounts.
+4. Let's now insert new transfer data.
 
 	```
 	<copy>
-    SELECT * FROM bank_transfers_dv;
-	</copy>
-    ```
-
-5. Let's now insert new transfer data.
-
-	```
-	<copy>
+    INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount) VALUES (2, 24, 26, 'transfer', 1186);
     INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount) VALUES (3, 25, 23, 'transfer', 4050);
     INSERT INTO bank_transfers (txn_id, src_acct_id, dst_acct_id, description, amount) VALUES (4, 26, 23, 'transfer', 1186);
 
     commit;
 	</copy>
     ```
-
-
 
 ## Task 4: Update Data
 
@@ -218,42 +206,7 @@ This lab assumes you have:
     ```
     ![Navigate to the JSON collection](images/im4-JSON-query-workshop.png " ")
 
-3. APPEND a new record to the X Company's transfer data.
-	```
-	<copy>
-    {"name":"X Company"}
-	</copy>
-    ```
-    ![Navigate to the JSON collection](images/im4-JSON-2-workshop.png " ")
-
-	```
-	<copy>
-    {
-        "_id": 24,
-        "name": "X Company",
-        "address": "146 Maple Street",
-        "zip": "12345",
-        "bank_transfers": [
-            {
-                "txnid": 1,
-                "dstAcctId": 25,
-                "description": "transfer",
-                "amount": 4050
-            },
-            {
-                "txnid": 2,
-                "dstAcctId": 26,
-                "description": "transfer",
-                "amount": 1186
-            }
-        ]
-    }
-	</copy>
-    ```
-    ![Append new JSON collection](images/im4-JSON-append-workshop.png " ")
-    ![Append new JSON collection result](images/im4-JSON-append-reqult-workshop.png " ")
-
-4. Let's now try and update company info from **`bank_transfers_dv`**. You'll see that this is not allowed!
+3. Let's now try and update company info from **`bank_transfers_dv`**. You'll see that this is not allowed!
 
     ![update account table](images/im4-JSON-update-company1-workshop.png " ")
 
@@ -272,16 +225,13 @@ This lab assumes you have:
     ![update account table](images/im4-JSON-update-company3-workshop.png " ")
 
 
-5. Let's now try and update company info from **`bank_accounts_dv`**. You'll see that this is allowed!
+4. Let's now try and update company info from **`bank_accounts_dv`**. You'll see that this is allowed!
 	```
 	<copy>
     {"name":"X Company"}
 	</copy>
     ```
     ![Navigate to the JSON collection](images/im4-JSON-account-workshop.png " ")
-
-
-
 
 	```
 	<copy>

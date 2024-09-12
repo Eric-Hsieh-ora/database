@@ -55,7 +55,7 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
 2. Sign into Graph Studio. 
 
-    Username: AI_DEMO
+    Username: ADMIN
 
     Password: Listed underneath Terraform Values -> User Password (ComeWel123##).
 
@@ -212,7 +212,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 
     ![Top 10 accounts](images/9-num-conduits-workshop.png)
 ​
-3. Note that account 387 shows up in both, so let's list accounts that received a transfer from account 1 in 1, 2, or 3 hops.
+3. Note that account 1 shows up in both, so let's list accounts that received a transfer from account 1 in 1, 2, or 3 hops.
 
     ```
     <copy>
@@ -364,7 +364,7 @@ A common query in analyzing money flows is to see if there is a sequence of tran
 ​
 12.  So let’s insert more transfers which create some circular payment chains.
 
-    We will be adding transfers from accounts **599**, **982**, and **407** into account **39**.
+    We will be adding transfers from accounts **4**, **5**, and **6** into account **15**.
 
     ```
     <copy>
