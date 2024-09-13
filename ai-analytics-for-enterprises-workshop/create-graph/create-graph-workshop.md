@@ -35,6 +35,10 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
     ![Content of the zip file](images/1-unzip-workshop.png)
 
+3. Back to the SQL action console.
+
+    ![Back to console](images/im8-workshop.png)
+
 3. Import bank account and transfer example data into your database.
 
     ![Load data](images/2-loaddata-workshop.png)

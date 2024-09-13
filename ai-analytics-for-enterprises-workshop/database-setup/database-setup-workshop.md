@@ -33,6 +33,7 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 
 5. You've now login in Oracle Autonomous Database 23ai on Oracle Cloud Infrastructure. Explore any of the labs at your own pace.
 
+    ![locate adb](images/im8-workshop.png " ")
     ![locate adb](images/im7-workshop.png " ")
 
 ## Learn More

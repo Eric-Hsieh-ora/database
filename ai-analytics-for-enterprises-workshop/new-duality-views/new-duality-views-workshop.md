@@ -208,6 +208,12 @@ This lab assumes you have:
 
 3. Let's now try and update company info from **`bank_transfers_dv`**. You'll see that this is not allowed!
 
+	```
+	<copy>
+    {"name":"X Company"}
+	</copy>
+    ```
+
     ![update account table](images/im4-JSON-update-company1-workshop.png " ")
 
     ```
