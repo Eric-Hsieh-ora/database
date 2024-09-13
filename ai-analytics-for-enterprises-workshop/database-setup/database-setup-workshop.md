@@ -41,7 +41,4 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 * [Introducing Oracle Database 23ai](https://blogs.oracle.com/database/post/oracle-database-23ai-the-next-long-term-support-release)
 * [Oracle Database Features and Licensing](https://apex.oracle.com/pls/apex/r/features/dbfeatures/home)
 
-## Acknowledgements
-* **Author** - Killian Lynch, Database Product Management
-* **Contributors** - Dom Giles, Distinguished Database Product Manager
-* **Last Updated By/Date** - Killian Lynch, April 2024
+

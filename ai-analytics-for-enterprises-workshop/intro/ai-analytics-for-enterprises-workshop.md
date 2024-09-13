@@ -4,41 +4,53 @@
 
 This workshop briefly introduces you to the JSON Duality View feature, working with Property Graphs, Vector DB in Oracle Database 23ai Free. You will create a graph from two tables, one containing bank account information, and another containing bank transactions information.  You will then run graph pattern queries in SQL on this graph.   You will find circular payment chains, multi-hop paths between accounts, and more.
 
-### **JSON Duality**
+### **JSON Duality** **_Estimated Time: 20 minutes_**
 
-JSON Relational Duality is a landmark capability in Oracle Database 23ai providing game-changing flexibility and simplicity for Oracle Database developers. This breakthrough innovation overcomes the historical challenges developers have faced when building applications, using relational or document models.
+JSON Relational Duality in Oracle Database 23c:
 
-“JSON Relational Duality in Oracle Database 23ai brings substantial simplicity and flexibility to modern app dev,” said Carl Olofson, research Vice President, Data Management Software, IDC. “It addresses the age-old object - relational mismatch problem, offering an option for developers to pick the best storage and access formats needed for each use case without having to worry about data structure, data mapping, data consistency, or performance tuning. No other specialized document databases offer such a revolutionary solution.”
+- Innovative feature bridging document and relational database models
+- Offers flexibility of JSON documents with efficiency of relational storage
+- Simplifies app development by eliminating data structure and mapping concerns
+- Implemented through JSON Relational Duality View
+- Unique solution praised by industry experts for addressing object-relational mismatch
 
-JSON Relational Duality helps to converge the benefits of both document and relational worlds. Developers now get the flexibility and data access benefits of the JSON document model, plus the storage efficiency and power of the relational model. The new feature enabling this convergence is JSON Relational Duality View (Will be referred below as Duality View).
-
-Key benefits of JSON Relational Duality:
-- Experience extreme flexibility in building apps using Duality View. Developers can access the same data relationally or as hierarchical documents based on their use case and are not forced into making compromises because of the limitations of the underlying database. Build document-centric apps on relational data or create SQL apps on documents.
-- Experience simplicity by retrieving and storing all the data needed for an app in a single database operation. Duality Views provide fully updateable JSON views over data. Apps can read a document, make necessary changes, and write the document back without worrying about underlying data structure, mapping, consistency, or performance tuning. 
-- Enable flexibility and simplicity in building multiple apps on same data. Developers can use the power of Duality View to define multiple JSON Views across overlapping groups of tables. This flexible data modeling makes building multiple apps against the same data easy and efficient.
-- Duality Views eliminate the inherent problem of data duplication and data inconsistency in document databases. Duality Views are fully ACID (atomicity, consistency, isolation, durability) transactions across multiple documents and tables. It eliminates data duplication across documents data, whereas consistency is maintained automatically. 
-- Build apps that support high concurrency access and updates. Traditional locks don’t work well for modern apps. A new lock-free concurrency control provided with Duality View supports high concurrency updates. The new-lock free concurrency control also works efficiently for interactive applications since the data is not locked during human thinking time.
-
-**_Estimated Time: 20 minutes_**
-
-### About Product/Technology - Property Graphs on 23ai Free
-In Oracle Database 23ai Free - Developer Release the GRAPH_TABLE function and MATCH clause of the new SQL:2023 standard enable you to write simple SQL queries to follow connections in data.  This workshop illustrates how you can model your data as a graph and run graph queries in SQL to quickly see relationships in your data that are difficult to identify otherwise.
-
-**_Estimated Time: 30 minutes_**
+This feature allows developers to leverage the best of both document and relational worlds, streamlining database management and application development.
 
 ### Objectives
 
 About JSON-relational duality views -> This workshop aims to provide hands-on experience with JSON-relational duality views, demonstrating how to get the strengths of both JSON and relational data models. You will learn how to create, query, and update JSON-relational duality views using SQL and REST.
 
+
+### **Property Graphs** **_Estimated Time: 30 minutes_**
+In Oracle Database 23ai the GRAPH_TABLE function and MATCH clause of the new SQL:2023 standard enable you to write simple SQL queries to follow connections in data.  This workshop illustrates how you can model your data as a graph and run graph queries in SQL to quickly see relationships in your data that are difficult to identify otherwise.
+
+
+
+### Objectives
+
 About Operational Property Graphs -> In this lab, you will :
 * Create a PROPERTY GRAPH from relational tables
 * Run graph pattern queries in SQL, using the new syntax from the SQL:2023 standard
 
-### Prerequisites
 
-This workhop assumes you have:
- * Oracle Database 23ai
- * Knowledge of SQL
+### **Advanced RAG with OCI Gen AI and 23ai** **_Estimated Time: 30 minutes_**
+
+In this lab, you will learn how to use Oracle GenAI service and Oracle 23ai to perform Advanced RAG.
+
+
+### Objectives
+
+- How Oracle Gen AI service and Oracle 23ai can be used within LangChain framework
+- How to leverage Oracle 23ai's AI Vector Search and Graph to perform Advanced RAG
+- How to use Oracle GenAI service to create an chat that answers questions intelligently using private information stored in Oracle 23ai 
+- Look at the multi-lingual capability of Oracle GenAI Service
+
+**We are also going to use an AI Agent in the lab:**
+- Langchain Agent Framework
+- Structed Chat ReAct Agent
+- Agent Tools
+
+
 
 ## Learn More
 * [JSON Relational Duality: The Revolutionary Convergence of Document, Object, and Relational Models](https://blogs.oracle.com/database/post/json-relational-duality-app-dev)
@@ -47,8 +59,3 @@ This workhop assumes you have:
 * [Oracle Property Graph](https://docs.oracle.com/en/database/oracle/property-graph/index.html)
 * [SQL Property Graph syntax in Oracle Database 23ai Free - Developer Release](https://docs.oracle.com/en/database/oracle/property-graph/23.1/spgdg/sql-ddl-statements-property-graphs.html#GUID-6EEB2B99-C84E-449E-92DE-89A5BBB5C96E)
 
-## Acknowledgements
-
-- **Author** - Kaylien Phan, Thea Lazarova, William Masdon
-- **Contributors** - Melliyal Annamalai, Jayant Sharma, Ramu Murakami Gutierrez, Rahul Tasker, David Start, Ranjan Priyadarshi
-- **Last Updated By/Date** - Kaylien Phan, Thea Lazarova, Database Product Management, April 2023

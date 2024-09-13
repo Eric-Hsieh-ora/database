@@ -32,7 +32,7 @@
             "filename": "../../create-graph/create-graph-workshop.md"
         },
         {
-          "title": "Lab 3: AI Vector Search",
+          "title": "Lab 3: Advanced RAG with OCI GenAI and 23ai",
           "description": "Try out AI Vector search in 23ai",
           "type": "livelabs",
           "filename": "../../new-ai-vector-search/new-ai-vector-search-workshop.md"
