@@ -27,11 +27,19 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 
     ![locate adb](images/im2-workshop.png " ")
 
-4. Entry the SQL development.
+4. Entry the SQL Action.
 
     ![locate adb](images/im3-workshop.png " ")
 
-5. You've now login in Oracle Autonomous Database 23ai on Oracle Cloud Infrastructure. Explore any of the labs at your own pace.
+5. Sign into SQL Action.
+
+    Username: ADMIN
+
+    Password: Listed underneath Terraform Values -> User Password (ComeWel123##).
+
+    ![Signing into SQL action](images/im3-login-workshop.png)
+
+6. You've now login in Oracle Autonomous Database 23ai on Oracle Cloud Infrastructure. Explore any of the labs at your own pace.
 
     ![locate adb](images/im8-workshop.png " ")
     ![locate adb](images/im7-workshop.png " ")
