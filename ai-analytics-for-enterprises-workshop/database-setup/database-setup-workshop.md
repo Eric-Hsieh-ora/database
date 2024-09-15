@@ -15,6 +15,10 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 1. Log in to the Oracle Cloud Console and select the region Singapore.
    https://cloud.oracle.com/?region=ap-singapore-1&tenant=hutchhk
 
+   Login account : **Workshop registration email address**
+
+   Login Password : **AIWorkshop123#**
+
    After login, if the region is not Singapore, click the region name in the top right hand of the screen and select Singapore.
 
     ![switch region](images/im1-switch-region.png " ")
