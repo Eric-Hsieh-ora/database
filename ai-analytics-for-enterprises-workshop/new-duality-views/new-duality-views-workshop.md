@@ -192,69 +192,53 @@ This lab assumes you have:
 
 ## Task 4: Update Data
 
-1. Navigate to the JSON collection page and view data.
-
-    ![Navigate to the JSON collection](images/im4-nav-JSON-page-workshop.png " ")
-    ![Navigate to the JSON collection](images/im4-JSON-page-workshop.png " ")
-
-2. Let's query the Y Company's transfer data by 'BANK_TRANSFERS' table.
+1. Let's query the Y Company's transfer data by **`bank_transfers_dv`** view.
 
 	```
 	<copy>
-    {"name":"Y Company"}
+    select * from bank_transfers_dv t where t.data."_id" = 25;
 	</copy>
     ```
-    ![Navigate to the JSON collection](images/im4-JSON-query-workshop.png " ")
+    ![Navigate to the JSON collection](images/im4-JSON-update-new1.png " ")
 
 3. Let's now try and update company info from **`bank_transfers_dv`**. You'll see that this is not allowed!
 
-	```
-	<copy>
-    {"name":"X Company"}
-	</copy>
-    ```
-
-    ![update account table](images/im4-JSON-update-company1-workshop.png " ")
 
     ```
 	<copy>
-    {
-        "_id": 24,
-        "name": "X Company",
-        "address": "150 Maple Street",
-        "zip": "55555"
-    }
+    UPDATE bank_transfers_dv t
+    SET t.data = json_transform(
+        data,
+        SET '$.name' = 'ABC company'
+    )
+    WHERE t.data."_id" =24;
 	</copy>
     ```
 
-    ![update account table](images/im4-JSON-update-company2-workshop.png " ")
-    ![update account table](images/im4-JSON-update-company3-workshop.png " ")
+    ![update account table](images/im4-JSON-update-not-allow.png " ")
 
 
 4. Let's now try and update company info from **`bank_accounts_dv`**. You'll see that this is allowed!
-	```
-	<copy>
-    {"name":"X Company"}
-	</copy>
-    ```
-    ![Navigate to the JSON collection](images/im4-JSON-account-workshop.png " ")
 
 	```
 	<copy>
-    {
-        "_id": 24,
-        "name": "X Company",
-        "balance": 111288.55,
-        "email": "x.company@example.com",
-        "address": "150 Maple Street",
-        "zip": "55555",
-        "phoneNumber": "555-1257",
-        "creditCard": "4111-1111-1111-1111"
-    }
+    update bank_accounts_dv t set data = json_mergepatch(data,'{
+    "_id": 24,
+    "name": "X Company",
+    "balance": 111288.55,
+    "email": "x.company@example.com",
+    "address": "150 Maple Street",
+    "zip": "55555",
+    "phoneNumber": "555-1257",
+    "creditCard": "4111-1111-1111-1111"}')
+    where t.data."_id" = 24;
+
+    commit;
+
+    select * from bank_accounts_dv a where a.data."_id"=24;
 	</copy>
     ```
-    ![update JSON collection](images/im4-JSON-3-workshop.png " ")
-    ![update JSON collection](images/im4-JSON-3-result-workshop.png " ")
+    ![update JSON collection](images/im4-JSON-update-new2.png " ")
 
 
 **You've completed the workshop!**
