@@ -61,7 +61,7 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
     Username: ADMIN
 
-    Password: Listed underneath Terraform Values -> User Password (ComeWel123##).
+    Password: Listed underneath Terraform Values -> User Password (AIWorkshop123#).
 
     ![Signing into Graph Studio](images/3-graph-studio-login-workshop.png)
 

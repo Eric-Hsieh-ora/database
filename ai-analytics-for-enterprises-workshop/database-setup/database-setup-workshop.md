@@ -39,7 +39,7 @@ The objective of this workshop is to set up the 23ai always free ADB. The follow
 
     Username: ADMIN
 
-    Password: Listed underneath Terraform Values -> User Password (ComeWel123##).
+    Password: Listed underneath Terraform Values -> User Password (AIWorkshop123#).
 
     ![Signing into SQL action](images/im3-login-workshop.png)
 
