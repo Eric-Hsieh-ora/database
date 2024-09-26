@@ -99,50 +99,43 @@ Watch the video below for a quick walk-through of the lab. The lab instructions 
 
     ![Graph successfully created](images/7-graph-create-success.png)
 
-## Task 3: Spin up the Notebook
+## Task 3: Prepare the graph environment
 
 1. Click the notebook icon on the left hand menu.
 
     ![Click notebook icon](images/8-nav-notebook.png)
 
-2. Click Create.
+2. Click DETACHED.
 
-    ![Creating notebook button clicked](images/8-create-notebook.png)
+    ![Creating notebook button clicked](images/8-create-notebook-detached.png)
 
-3. You can name the notebook **BANK_GRAPH**. The description will be **Notebook for Operational Property Graphs LiveLab**. You can leave the tags empty.
+3. Click the start button.
 
-    ![Notebook information being filled out](images/9-notebook-info.png)
+    ![Notebook information being filled out](images/8-create-notebook-start.png)
 
 4. You'll see a message saying that Graph Studio is being attached to an internal compute environment. The notebook will allow us to run PGQ queries against our bank schema, but first needs to spin up. It should take less than a minute.
 
     ![Graph Studio attaching to internal compute environment](images/10-attach-graph.png)
 
-5. Once it finishes, it should look like this. You can see the DETACHED message in the upper right corner turn to say ATTACHED with a green light.
+5. Once it completed, it should look like this. You can see the DETACHED message in the upper right corner turn to say ATTACHED with a green light.
 
     ![Environment was attached](images/11-notebook-success.png)
 
-6. You may now proceed to the next lab.
-
-## Task 4 : Query metadata of bank_graph
-
-1. Import Notebook
-    ![Import Notebook](images/12-notebook-impart.png)
-    ![Import Notebook](images/12-notebook1-impart.png)
-
-## Task 5 : Query bank_graph
-​
-
-1. Load in memory the graph. Paste the following SQL statement into the text box:
+6. Load in memory the graph. Paste the following SQL statement into the text box:
 
     ![Load data in memory](images/1-load-in-memory.png)
     ![Load data in memory](images/2-load-in-memory.png)
     ![Load data in memory](images/3-load-in-memory.png)
 
-2. Into Bank Graph and load data into memory.
+7. You may now proceed to the next lab.
 
-    ![Load data in memory](images/4-load-in-memory.png)
+## Task 4 : Import the Notebook
 
-20. You have now completed this lab.
+1. Import Notebook
+    ![Import Notebook](images/12-notebook-impart.png)
+    ![Import Notebook](images/12-notebook1-impart.png)
+
+2. Follow the notebook to complete this lab.
 
 ## Learn More
 
